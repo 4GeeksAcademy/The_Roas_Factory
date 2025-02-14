@@ -6,16 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página no encontrada - The Roas Factory</title>
     <script>
-        (function () {
+        (function() {
             var redirectTo = window.location.pathname;
-            var basePath = "/The_Roas_Factory";
-
-            // Si la URL es un artículo del blog, cambia la ruta usando hash
-            if (redirectTo.startsWith(basePath + "/blog/")) {
+            var basePath = "/The_Roas_Factory"; 
+    
+            // Si hay un referrer válido y pertenece al sitio, usamos ese
+            if (document.referrer.includes(basePath) && document.referrer !== window.location.href) {
+                window.location.replace(document.referrer);
+            } else if (redirectTo.startsWith(basePath + "/blog/")) {
+                // Manejo especial para los artículos del blog
                 window.location.replace(basePath + "/#blog" + redirectTo.replace(basePath + "/blog", ""));
-            }
-            // Para el resto de las páginas
-            else if (!redirectTo.startsWith(basePath + "/index.html") && redirectTo !== basePath + "/") {
+            } else if (!redirectTo.startsWith(basePath + "/index.html") && redirectTo !== basePath + "/") {
                 window.location.replace(basePath + "/#" + redirectTo);
             }
         })();
