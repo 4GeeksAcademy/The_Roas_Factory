@@ -7,20 +7,16 @@
     <title>Página no encontrada - The Roas Factory</title>
     <script>
         (function() {
-            var redirectTo = window.location.pathname;
             var basePath = "/The_Roas_Factory"; 
+            var redirectTo = window.location.pathname.replace(basePath, "");
     
-            // Si hay un referrer válido y pertenece al sitio, usamos ese
-            if (document.referrer.includes(basePath) && document.referrer !== window.location.href) {
-                window.location.replace(document.referrer);
-            } else if (redirectTo.startsWith(basePath + "/blog/")) {
-                // Manejo especial para los artículos del blog
-                window.location.replace(basePath + "/#blog" + redirectTo.replace(basePath + "/blog", ""));
-            } else if (!redirectTo.startsWith(basePath + "/index.html") && redirectTo !== basePath + "/") {
+            // Evita redirecciones infinitas y corrige la navegación
+            if (redirectTo !== "/" && !redirectTo.startsWith("#")) {
                 window.location.replace(basePath + "/#" + redirectTo);
             }
         })();
     </script>
+    
 
     <style>
         body {
