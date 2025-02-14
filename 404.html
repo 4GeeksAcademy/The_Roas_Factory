@@ -1,36 +1,45 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página no encontrada - The Roas Factory</title>
     <script>
-        (function() {
+        (function () {
             var redirectTo = window.location.pathname;
-            var basePath = "/The_Roas_Factory"; // Ajusta si es necesario
-    
-            // Evita que se redirija a sí mismo en bucle
-            if (!redirectTo.startsWith(basePath + "/index.html") && redirectTo !== basePath + "/") {
+            var basePath = "/The_Roas_Factory";
+
+            // Si la URL es un artículo del blog, cambia la ruta usando hash
+            if (redirectTo.startsWith(basePath + "/blog/")) {
+                window.location.replace(basePath + "/#blog" + redirectTo.replace(basePath + "/blog", ""));
+            }
+            // Para el resto de las páginas
+            else if (!redirectTo.startsWith(basePath + "/index.html") && redirectTo !== basePath + "/") {
                 window.location.replace(basePath + "/#" + redirectTo);
             }
         })();
     </script>
-    
+
     <style>
         body {
             font-family: Arial, sans-serif;
             text-align: center;
             margin: 50px;
         }
+
         h1 {
             color: #333;
         }
+
         p {
             color: #666;
         }
+
         .links {
             margin-top: 20px;
         }
+
         .links a {
             display: block;
             margin: 5px;
@@ -39,37 +48,51 @@
         }
     </style>
 </head>
+
 <body>
     <h1>Oops! Página no encontrada</h1>
     <p>Parece que esta página no existe o ha sido movida.</p>
-    
+
     <div class="links">
         <h2>Ir a:</h2>
-        <a href="/The_Roas_Factory/">🏠 Inicio</a>
-        <a href="/The_Roas_Factory/agencia">🚀 Agencia</a>
-        <a href="/The_Roas_Factory/servicios">💡 Servicios</a>
-        <a href="/The_Roas_Factory/blog">📝 Blog</a>
-        <a href="/The_Roas_Factory/contactanos">📩 Contáctanos</a>
-        
+        <a href="/The_Roas_Factory/">Inicio</a>
+        <a href="/The_Roas_Factory/agencia">Agencia</a>
+        <a href="/The_Roas_Factory/servicios">Servicios</a>
+        <a href="/The_Roas_Factory/blog">Blog</a>
+        <a href="/The_Roas_Factory/contactanos">Contáctanos</a>
+
         <h2>Artículos del Blog:</h2>
-        <a href="/The_Roas_Factory/blog/marketing-digital-2025">📌 Cómo mejorar tu estrategia de marketing digital en 2025</a>
-        <a href="/The_Roas_Factory/blog/seo-2025">📌 SEO en 2025: Cómo dominar Google con estrategias avanzadas</a>
-        <a href="/The_Roas_Factory/blog/redes-sociales">📌 Redes sociales y engagement: Cómo conectar con tu audiencia</a>
-        <a href="/The_Roas_Factory/blog/publicidad-online">📌 Publicidad online: Cómo optimizar tu inversión en anuncios</a>
-        <a href="/The_Roas_Factory/blog/email-marketing">📌 Email marketing en 2025: Estrategias que funcionan</a>
-        <a href="/The_Roas_Factory/blog/branding-digital">📌 Cómo crear una marca sólida en el mundo digital</a>
-        <a href="/The_Roas_Factory/blog/marketing-contenido">📌 Marketing de contenido: Cómo atraer y retener clientes</a>
-        <a href="/The_Roas_Factory/blog/ecommerce-2025">📌 Tendencias en comercio electrónico para 2025</a>
-        <a href="/The_Roas_Factory/blog/automatizacion-marketing">📌 Automatización de marketing: Cómo ahorrar tiempo y aumentar conversiones</a>
-        <a href="/The_Roas_Factory/blog/tiktok-empresas">📌 TikTok para empresas: Cómo aprovechar su potencial en 2025</a>
-        <a href="/The_Roas_Factory/blog/roas-publicidad-digital">📌 ROAS: Cómo optimizar tu retorno de inversión en publicidad digital</a>
-        <a href="/The_Roas_Factory/blog/facebook-ads-roas">📌 Facebook Ads: Técnicas avanzadas para mejorar tu ROAS</a>
-        <a href="/The_Roas_Factory/blog/roas-google-ads">📌 ROAS en Google Ads: Cómo optimizar tu inversión publicitaria</a>
-        <a href="/The_Roas_Factory/blog/roas-instagram-ads">📌 Instagram Ads: Cómo aumentar tu ROAS con estrategias avanzadas</a>
-        <a href="/The_Roas_Factory/blog/roas-tiktok-ads">📌 TikTok Ads: Estrategias avanzadas para maximizar tu ROAS</a>
-        <a href="/The_Roas_Factory/blog/uso-de-ia-en-marketing">📌 Cómo la inteligencia artificial está revolucionando el marketing digital</a>
-        <a href="/The_Roas_Factory/blog/analitica-marketing">📌 Medición y optimización de campañas con analítica de datos</a>
-        <a href="/The_Roas_Factory/blog/ecommerce-estrategias-2025">📌 Estrategias para potenciar tu e-commerce en 2025</a>
+        <a href="/The_Roas_Factory/blog/marketing-digital-2025">Cómo mejorar tu estrategia de marketing digital en
+            2025</a>
+        <a href="/The_Roas_Factory/blog/seo-2025">SEO en 2025: Cómo dominar Google con estrategias avanzadas</a>
+        <a href="/The_Roas_Factory/blog/redes-sociales">Redes sociales y engagement: Cómo conectar con tu
+            audiencia</a>
+        <a href="/The_Roas_Factory/blog/publicidad-online">Publicidad online: Cómo optimizar tu inversión en
+            anuncios</a>
+        <a href="/The_Roas_Factory/blog/email-marketing">Email marketing en 2025: Estrategias que funcionan</a>
+        <a href="/The_Roas_Factory/blog/branding-digital">Cómo crear una marca sólida en el mundo digital</a>
+        <a href="/The_Roas_Factory/blog/marketing-contenido">Marketing de contenido: Cómo atraer y retener
+            clientes</a>
+        <a href="/The_Roas_Factory/blog/ecommerce-2025">Tendencias en comercio electrónico para 2025</a>
+        <a href="/The_Roas_Factory/blog/automatizacion-marketing">Automatización de marketing: Cómo ahorrar tiempo y
+            aumentar conversiones</a>
+        <a href="/The_Roas_Factory/blog/tiktok-empresas">TikTok para empresas: Cómo aprovechar su potencial en
+            2025</a>
+        <a href="/The_Roas_Factory/blog/roas-publicidad-digital">ROAS: Cómo optimizar tu retorno de inversión en
+            publicidad digital</a>
+        <a href="/The_Roas_Factory/blog/facebook-ads-roas">Facebook Ads: Técnicas avanzadas para mejorar tu ROAS</a>
+        <a href="/The_Roas_Factory/blog/roas-google-ads"> ROAS en Google Ads: Cómo optimizar tu inversión
+            publicitaria</a>
+        <a href="/The_Roas_Factory/blog/roas-instagram-ads">Instagram Ads: Cómo aumentar tu ROAS con estrategias
+            avanzadas</a>
+        <a href="/The_Roas_Factory/blog/roas-tiktok-ads">TikTok Ads: Estrategias avanzadas para maximizar tu ROAS</a>
+        <a href="/The_Roas_Factory/blog/uso-de-ia-en-marketing">Cómo la inteligencia artificial está revolucionando
+            el marketing digital</a>
+        <a href="/The_Roas_Factory/blog/analitica-marketing">Medición y optimización de campañas con analítica de
+            datos</a>
+        <a href="/The_Roas_Factory/blog/ecommerce-estrategias-2025">Estrategias para potenciar tu e-commerce en
+            2025</a>
     </div>
 </body>
+
 </html>
