@@ -66,6 +66,5 @@ node_modules/
 .vercel
 
 # Ignorar la carpeta dist en master, pero permitirla en gh-pages
-dist/
 !dist/.gitkeep
 
