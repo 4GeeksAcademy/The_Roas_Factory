@@ -6,19 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página no encontrada - The Roas Factory</title>
     <script>
-        setTimeout(function() {
+        (function() {
             var redirectTo = window.location.pathname;
             var basePath = "/The_Roas_Factory";
     
-            console.log("⏳ Esperando antes de redirigir...", redirectTo);
+            console.log("⏳ Verificando redirección para:", redirectTo);
     
+            // Evita redirecciones infinitas
+            if (window.location.search.includes("redirected=true")) {
+                console.log("⏹ Ya se redirigió, deteniendo.");
+                return;
+            }
+    
+            // Solo redirigir si la URL no es el home y no tiene el hash correcto
             if (!redirectTo.endsWith("index.html") && redirectTo !== basePath + "/") {
-                var newUrl = basePath + redirectTo;
+                var newUrl = basePath + "/#!" + redirectTo + "?redirected=true"; 
                 console.log("✅ Redirigiendo a:", newUrl);
                 window.location.replace(newUrl);
             }
-        }, 200); // Esperamos 200ms antes de redirigir
+        })();
     </script>
+    
     
 
     <style>
