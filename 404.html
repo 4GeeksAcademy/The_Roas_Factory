@@ -5,27 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página no encontrada - The Roas Factory</title>
-    <script>
-        (function() {
-            var redirectTo = window.location.pathname;
-            var basePath = "/The_Roas_Factory";
+    (function() {
+        var basePath = "/The_Roas_Factory"; 
+        var redirectTo = window.location.pathname.replace(basePath, "");
     
-            console.log("⏳ Verificando redirección para:", redirectTo);
+        console.log("🚀 Redirigiendo a:", basePath + redirectTo);
     
-            // Evita redirecciones infinitas
-            if (window.location.search.includes("redirected=true")) {
-                console.log("⏹ Ya se redirigió, deteniendo.");
-                return;
-            }
-    
-            // Solo redirigir si la URL no es el home y no tiene el hash correcto
-            if (!redirectTo.endsWith("index.html") && redirectTo !== basePath + "/") {
-                var newUrl = basePath + "/#!" + redirectTo + "?redirected=true"; 
-                console.log("✅ Redirigiendo a:", newUrl);
-                window.location.replace(newUrl);
-            }
-        })();
-    </script>
+        if (redirectTo !== "/" && !redirectTo.startsWith("#")) {
+            window.history.replaceState(null, "", basePath + redirectTo);
+            window.location.reload(); // Recargar para que React lo interprete
+        }
+    })();
     
     
 
