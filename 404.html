@@ -5,14 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página no encontrada - The Roas Factory</title>
     <script>
-        // Redireccionamiento automático para rutas en GitHub Pages
-        var redirectTo = window.location.pathname;
-        var basePath = "/The_Roas_Factory"; // Asegúrate de que coincide con publicPath en Webpack
-
-        if (!redirectTo.startsWith(basePath)) {
-            window.location.replace(basePath + redirectTo);
-        }
+        (function() {
+            var redirectTo = window.location.pathname;
+            var basePath = "/The_Roas_Factory"; // Ajusta si es necesario
+    
+            // Evita que se redirija a sí mismo en bucle
+            if (!redirectTo.startsWith(basePath + "/index.html") && redirectTo !== basePath + "/") {
+                window.location.replace(basePath + "/#" + redirectTo);
+            }
+        })();
     </script>
+    
     <style>
         body {
             font-family: Arial, sans-serif;
