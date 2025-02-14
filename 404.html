@@ -8,12 +8,19 @@
 
     <script>
         (function() {
-            var basePath = "/The_Roas_Factory"; 
-            var redirectTo = window.location.pathname.replace(basePath, "");
+            var basePath = "/The_Roas_Factory";
+            var currentPath = window.location.pathname;
+            var redirectTo = currentPath.replace(basePath, "");
 
-            console.log("🚀 Redirigiendo a:", basePath + redirectTo);
+            console.log("🚀 URL actual:", window.location.href);
+            console.log("🔄 Intentando redirigir a:", basePath + redirectTo);
 
-            if (redirectTo !== "/" && !redirectTo.startsWith("#")) {
+            // Si ya estamos en la versión corregida, NO redirigir de nuevo
+            if (window.sessionStorage.getItem("redirected") === "true") {
+                console.log("✅ Ya redirigimos una vez, deteniendo bucle.");
+                window.sessionStorage.removeItem("redirected");
+            } else if (redirectTo !== "/" && !redirectTo.startsWith("#")) {
+                window.sessionStorage.setItem("redirected", "true"); // Evitar bucles
                 window.history.replaceState(null, "", basePath + redirectTo);
                 window.location.reload(); // Recargar para que React lo interprete
             }
