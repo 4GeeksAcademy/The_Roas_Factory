@@ -11,21 +11,26 @@
             var basePath = "/The_Roas_Factory";
             var currentPath = window.location.pathname;
             var redirectTo = currentPath.replace(basePath, "");
-
+    
             console.log("🚀 URL actual:", window.location.href);
             console.log("🔄 Intentando redirigir a:", basePath + redirectTo);
-
-            // Si ya estamos en la versión corregida, NO redirigir de nuevo
+    
+            // Evitar redirecciones infinitas
             if (window.sessionStorage.getItem("redirected") === "true") {
                 console.log("✅ Ya redirigimos una vez, deteniendo bucle.");
                 window.sessionStorage.removeItem("redirected");
-            } else if (redirectTo !== "/" && !redirectTo.startsWith("#")) {
-                window.sessionStorage.setItem("redirected", "true"); // Evitar bucles
-                window.history.replaceState(null, "", basePath + redirectTo);
-                window.location.reload(); // Recargar para que React lo interprete
+            } 
+            else {
+                // Si estamos en una ruta que React debe manejar, redirigir correctamente
+                if (redirectTo !== "/" && !redirectTo.startsWith("#")) {
+                    console.log("🔄 Redirigiendo a:", basePath + "#" + redirectTo);
+                    window.sessionStorage.setItem("redirected", "true"); // Evitar bucles
+                    window.location.replace(basePath + "#" + redirectTo);
+                }
             }
         })();
     </script>
+    
 
     <style>
         body {
